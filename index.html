@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FPT Polytechnic</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrapper">
+
+  <header class="header">
+    <a href="#" class="logo"><img src="logo-trang.png" alt="FPT Polytechnic"></a>
+    <form class="search" action="#" onsubmit="return false;">
+      <input type="text" aria-label="Tìm kiếm">
+      <button type="submit">Tìm kiếm</button>
+    </form>
+  </header>
+
+  <nav class="menu">
+    <ul>
+      <li><a href="#">Trang chủ</a></li>
+      <li><a href="#">Tuyển sinh</a></li>
+      <li><a href="#">Chương trình đào tạo</a></li>
+      <li><a href="#">Góc sinh viên</a></li>
+      <li><a href="#">Tuyển dụng</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section class="events">
+      <div class="news">
+        <h3 class="sec-title">SỰ KIỆN</h3>
+        <div class="cards">
+          <article class="card">
+            <a href="#" class="img"><img src="row4.png" alt="Lễ ký kết"></a>
+            <h2><a href="#">Tự hào 153 sinh viên FPoly Hà Nội xuất sắc của kỳ Summer 2022 ghi danh trên “Ngôi sao danh vọng” Golden Bee Award</a></h2>
+            <p>Tối ngay 07/10/2022, Cao đẳng FPT Polytechnic Hà Nội đã tổ chức Lễ tôn vinh “Ong vàng Poly”, tuyên dương 153 cá nhân và tập thể có thành tích xuất sắc trong học tập cũng như hoạt động.</p>
+            <ul><li><a href="#">Chuỗi nhạc hội Happy Bee đến với cộng đồng sinh viên</a></li></ul>
+          </article>
+          <article class="card">
+            <a href="#" class="img"><img src="row5.png" alt="CLB TF Crew"></a>
+            <h2><a href="#">CLB TF CREW – “Oanh tạc” khắp sự kiện lớn nhỏ của FPoly Hà Nội dù mới hoạt động thử nghiệm được 3 tháng</a></h2>
+            <p>CLB TF Crew là nơi dành cho các bạn sinh viên Cao đẳng FPT Polytechnic Hà Nội có đam mê với nhảy múa, hip hop. Trải qua 3 tháng hoạt động thử nghiệm, TF Crew đã xuất hiện trên nhiều sân khấu lớn nhỏ</p>
+            <ul><li><a href="#">Chuỗi nhạc hội Happy Bee đến với cộng đồng sinh viên</a></li></ul>
+          </article>
+        </div>
+      </div>
+      <a href="#" class="banner"><img src="banner.png" alt="Đăng ký ngay"></a>
+    </section>
+
+    <section class="partners">
+      <h2 class="sec-title2">ĐỐI TÁC</h2>
+      <div class="logos">
+        <a href="#"><img src="dt1.png" alt="Canon"></a>
+        <a href="#"><img src="dt2.png" alt="FPT Software"></a>
+        <a href="#"><img src="dt3.png" alt="Eden Plaza Danang"></a>
+        <a href="#"><img src="dt4.png" alt="PNC"></a>
+      </div>
+    </section>
+
+    <section class="register">
+      <h2>ĐĂNG KÝ TƯ VẤN</h2>
+      <form id="regForm" novalidate>
+        <div class="row">
+          <label for="name">Họ và tên</label>
+          <input type="text" id="name" placeholder="Nhập họ và tên">
+          <span class="err" id="errName"></span>
+        </div>
+        <div class="row">
+          <label for="email">Email</label>
+          <input type="text" id="email" placeholder="example@gmail.com">
+          <span class="err" id="errEmail"></span>
+        </div>
+        <div class="row">
+          <label for="phone">Số điện thoại</label>
+          <input type="text" id="phone" placeholder="0912345678">
+          <span class="err" id="errPhone"></span>
+        </div>
+        <div class="row">
+          <label for="major">Ngành học</label>
+          <select id="major">
+            <option value="">-- Chọn ngành --</option>
+            <option>Thiết kế đồ họa</option>
+            <option>Lập trình web</option>
+            <option>Marketing</option>
+          </select>
+          <span class="err" id="errMajor"></span>
+        </div>
+        <button type="submit">Đăng ký</button>
+        <p class="ok" id="okMsg"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer"><a href="#">TÊN SINH VIÊN</a></footer>
+</div>
+
+<script>
+document.getElementById('regForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  var name = document.getElementById('name').value.trim();
+  var email = document.getElementById('email').value.trim();
+  var phone = document.getElementById('phone').value.trim();
+  var major = document.getElementById('major').value;
+  var valid = true;
+
+  function setErr(id, msg) {
+    document.getElementById(id).textContent = msg;
+    if (msg) valid = false;
+  }
+  setErr('errName', name === '' ? 'Vui lòng nhập họ và tên' :
+                    name.length < 3 ? 'Họ và tên tối thiểu 3 ký tự' : '');
+  setErr('errEmail', email === '' ? 'Vui lòng nhập email' :
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? 'Email không đúng định dạng' : '');
+  setErr('errPhone', phone === '' ? 'Vui lòng nhập số điện thoại' :
+                    !/^(0|\+84)\d{9}$/.test(phone) ? 'Số điện thoại không hợp lệ (VD: 0912345678)' : '');
+  setErr('errMajor', major === '' ? 'Vui lòng chọn ngành học' : '');
+
+  document.getElementById('okMsg').textContent = valid ? 'Đăng ký thành công!' : '';
+  if (valid) this.reset();
+});
+</script>
+</body>
+</html>
